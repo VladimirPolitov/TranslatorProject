@@ -1,1 +1,52 @@
+.boxTranslator {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: black 1px solid;
+    font-size: 1rem;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+.wordInput {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 200px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-family: Georgia, serif;
+}
+
+.outerWord {
+    padding: 10px 10px 20px 10px;
+    font-size: 1.25rem;
+    font-family: Georgia, serif;
+}
+
+.button {
+    color: #ffffff;
+    background: #4696e5;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px;
+    margin-bottom: 20px;
+}
+
+.button:hover {
+    background-image: radial-gradient(ellipse farthest-corner at 20% 20%, #469bb2, #ffffff);
+}
+
+.buttonOn {
+    color: #ffffff;
+    background: #46bce5;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px;
+}
+
 

@@ -6,7 +6,6 @@ export default function App(props) {
 
     const toCase = (str, choice) => {
         let strPub = {
-                // правила для окончаний
                 а: ["ы", "е", "у", "ой", "е"],
                 "(ш/ж/к/ч)а": ["%и", "%е", "%у", "%ой", "%е"],
                 "б/в/м/г/д/л/ж/з/к/н/п/т/ф/ч/ц/щ/р/х": ["%а", "%у", "%а", "%ом", "%е"],
@@ -23,7 +22,6 @@ export default function App(props) {
                 я: ["и", "е", "ю", "ей", "е"]
             },
             cases = {
-                // номера для падежей, не считая Именительный
                 р: 0,
                 д: 1,
                 в: 2,
@@ -31,7 +29,6 @@ export default function App(props) {
                 п: 4
             },
             exs = {
-                // исключения, сколько символов забирать с конца
                 ц: 2,
                 ок: 2
             },
@@ -43,13 +40,11 @@ export default function App(props) {
             forPseudo;
         for (let i in strPub) {
             if (i.length > 1 && str.slice(-i.length) == i) {
-                // для окончаний, длиной >1
                 lastIndex = i;
                 reformedStr = str.slice(0, -lastIndex.length);
                 break;
             } else if (/[\(\)]+/g.test(i)) {
-                // фича: группировка окончаний
-                i.replace(/\(([^\(\)]+)\)([^\(\)]+)?/g, function(a, b, c) {
+                i.replace(/\(([^\(\)]+)\)([^\(\)]+)?/g, function (a, b, c) {
                     splitted = b.split("/");
                     for (let o = 0; o < splitted.length; o++) {
                         groupped = splitted[o] + c;
@@ -68,14 +63,12 @@ export default function App(props) {
                     }
                 });
             } else {
-                // дефолт
                 lastIndex = str.slice(-1);
                 reformedStr = str.slice(0, -(forPseudo || lastIndex).length);
             }
             if (/\//.test(i) && !/[\(\)]+/g.test(i) && new RegExp(lastIndex).test(i))
-                forLong = i; // группированные окончания, разделающиеся слешем
+                forLong = i;
             for (let o in exs) {
-                // поиск исключений
                 if (str.slice(-o.length) == o) reformedStr = str.slice(0, -exs[o]);
             }
         }
@@ -89,8 +82,8 @@ export default function App(props) {
     };
 
     return (
-        <div className="App">
-            <span>{toCase(word, props.revers)}</span>
+        <div className={"outerWord"}>
+            {toCase(word, props.revers)}
         </div>
     );
 }
